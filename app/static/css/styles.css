@@ -33,3 +33,10 @@ h1{
     text-align: center;
     color:#5ccc9e;
 }
+
+/* login-html */
+.col-md-8{
+    background-color: #fff;
+    padding: 2vw 2vw;
+    border-radius:2vw;
+}
