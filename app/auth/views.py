@@ -15,6 +15,7 @@ def register():
         user = User(email = form.email.data, username = form.username.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
+        # flash('You have successfully registered! You may now login.')
         
         return redirect(url_for('auth.login'))
         title = "New Account"
