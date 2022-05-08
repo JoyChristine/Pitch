@@ -1,0 +1,35 @@
+body{
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}
+.btn-navbar{
+    background-color: #13aa52;
+    border: 1px solid #13aa52;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.3vw;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 0.9vw 1vw;
+    text-align: center;
+  
+}
+.btn-navbar li  a {
+    color: #fff;
+    text-decoration: none;
+}
+h2{
+    text-align: center;
+    color: #fff;
+}
+h1{
+    text-align: center;
+    color:#5ccc9e;
+}
