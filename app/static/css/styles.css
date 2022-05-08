@@ -21,7 +21,13 @@ h1{
     /* text-align: center; */
     color:#5ccc9e;
 }
-h3,p{
+h3{
+    color: #fff;
+}
+.tab-content p{
+    color: #fff;
+}
+.section p {
     color: #fff;
 }
 
