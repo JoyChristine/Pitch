@@ -1,3 +1,5 @@
+/* ********************home.html */
+
 body{
     background-image: url(../images/background.jpg);
     background-size: cover;
@@ -5,6 +7,25 @@ body{
     height: 100vh;
 
 }
+.nav li a{
+    color: #fff;
+}
+.nav li a:hover{
+    background-color: black;
+}
+h2{
+    /* text-align: center; */
+    color: #fff;
+}
+h1{
+    /* text-align: center; */
+    color:#5ccc9e;
+}
+h3,p{
+    color: #fff;
+}
+
+/****************************** navbar */
 .btn-navbar{
     background-color: #13aa52;
     border: 1px solid #13aa52;
@@ -25,14 +46,7 @@ body{
     color: #fff;
     text-decoration: none;
 }
-h2{
-    text-align: center;
-    color: #fff;
-}
-h1{
-    text-align: center;
-    color:#5ccc9e;
-}
+
 
 /* login-html */
 .col-md-8{
