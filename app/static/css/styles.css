@@ -1,0 +1,64 @@
+/* ********************home.html */
+
+body{
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vh;
+    overflow: hidden;
+
+}
+.nav li a{
+    color: #fff;
+}
+.nav li a:hover{
+    background-color: black;
+}
+h2{
+    /* text-align: center; */
+    color: #fff;
+}
+h1{
+    /* text-align: center; */
+    color:#5ccc9e;
+}
+h3{
+    color: #fff;
+}
+.tab-content p{
+    color: #fff;
+}
+.section p {
+    color: #fff;
+}
+
+/****************************** navbar */
+.btn-navbar{
+    background-color: #13aa52;
+    border: 1px solid #13aa52;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.3vw;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 0.9vw 1vw;
+    text-align: center;
+  
+}
+.btn-navbar li  a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* login-html */
+.col-md-8{
+    background-color: #fff;
+    padding: 2vw 2vw;
+    border-radius:2vw;
+}
