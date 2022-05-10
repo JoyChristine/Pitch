@@ -1,16 +1,29 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-
 from flask_login import login_required,current_user
 from ..models import User,Pitch,Comment,Role, Like, Dislike
 from .. import db,photos
 from .forms import UpdateProfile,PitchForm,CommentForm
+from sqlalchemy.sql import func
+from sqlalchemy.orm import session
+from sqlalchemy import text
 
 
-@main.route('/')
+
+@main.route('/', methods=['GET','POST'])
 def index():
-    message = "This is the index page"
-    return render_template('home.html', message=message)
+   
+    promotionpitches = Pitch.query.filter_by(category='promotion').order_by(Pitch.posted.desc()).all()
+    interviewpitches = Pitch.query.filter_by(category="Interview-Pitch").order_by(Pitch.posted.desc()).all()
+    businesspitches = Pitch.query.filter_by(category="Business-Pitch").order_by(Pitch.posted.desc()).all()
+    productpitches = Pitch.query.filter_by(category="Product-Pitch").order_by(Pitch.posted.desc()).all()
+
+    pitches = Pitch.query.filter_by().first()
+    likes = Like.get_all_likes(pitch_id=Pitch.id)
+    dislikes = Dislike.get_all_dislikes(pitch_id=Pitch.id)
+
+    title = 'Home'
+    return render_template('index.html', title = title, pitches = pitches, promotionpitches = promotionpitches, interviewpitches = interviewpitches, businesspitches = businesspitches, productpitches = productpitches, likes = likes, dislikes = dislikes)
 
 
 @main.route('/user/<uname>')
