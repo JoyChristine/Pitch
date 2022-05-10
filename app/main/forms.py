@@ -11,7 +11,7 @@ class UpdateProfile(FlaskForm):
 class PitchForm(FlaskForm):
     pitch_title = TextAreaField('Pitch title',validators = [InputRequired()])
     content = TextAreaField('Pitch content',validators = [InputRequired()])
-    category = TextAreaField('Pitch category',  validators=[InputRequired()])
+    category = TextAreaField('Pitch category',validators = [InputRequired()])
     submit = SubmitField('Submit')
 
 class CommentForm(FlaskForm):
