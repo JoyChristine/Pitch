@@ -4,9 +4,9 @@ from flask_login import login_required,current_user
 from ..models import User,Pitch,Comment,Role, Like, Dislike
 from .. import db,photos
 from .forms import UpdateProfile,PitchForm,CommentForm
-from sqlalchemy.sql import func
-from sqlalchemy.orm import session
-from sqlalchemy import text
+# from sqlalchemy.sql import func
+# from sqlalchemy.orm import session
+# from sqlalchemy import text
 
 
 
@@ -14,9 +14,9 @@ from sqlalchemy import text
 def index():
    
     promotionpitches = Pitch.query.filter_by(category='promotion').order_by(Pitch.posted.desc()).all()
-    interviewpitches = Pitch.query.filter_by(category="Interview-Pitch").order_by(Pitch.posted.desc()).all()
-    businesspitches = Pitch.query.filter_by(category="Business-Pitch").order_by(Pitch.posted.desc()).all()
-    productpitches = Pitch.query.filter_by(category="Product-Pitch").order_by(Pitch.posted.desc()).all()
+    interviewpitches = Pitch.query.filter_by(category="interview").order_by(Pitch.posted.desc()).all()
+    businesspitches = Pitch.query.filter_by(category="business").order_by(Pitch.posted.desc()).all()
+    productpitches = Pitch.query.filter_by(category="product").order_by(Pitch.posted.desc()).all()
 
     pitches = Pitch.query.filter_by().first()
     likes = Like.get_all_likes(pitch_id=Pitch.id)
@@ -94,24 +94,3 @@ def pitch():
 
     title = 'New Pitch | One Minute Pitch'
     return render_template('newpitch.html', title = title, pitch_form = pitch_form, likes = my_likes)
-
-
-# @main.route('/newpitch/new',methods=['GET','POST']) 
-# @login_required
-# def new_pitch():
-
-#     newpitch_form = PitchForm()
-
-#     if newpitch_form.validate_on_submit():
-#         pitch_title = newpitch_form.pitch_title.data
-#         content = newpitch_form.content.data
-#         category = newpitch_form.category.data
-
-#         # create new pitch object
-#         newPitch = new_pitch(pitch_title=pitch_title,content=content,category=category)
-#         newPitch.save()
-
-#         return redirect(url_for('main.index'))
-
-#     title = 'New Pitch'
-#     return render_template('newpitch.html',title=title,newpitch_form=newpitch_form)

@@ -1,6 +1,107 @@
-{% extends 'base.html'%}
-{%block content%}
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% block content%}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
 <body>
-    <h1>Hello</h1>
+    <div class="main">
+        <h2>Welcome to Pitch</h2>
+    </div>
+    <div class="container">
+        
+        <div id="content">
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#promotion" data-toggle="tab">Promotion</a></li>
+                <li><a href="#interview" data-toggle="tab">Interview</a></li>
+                <li><a href="#business" data-toggle="tab">Business</a></li>
+                <li><a href="#product" data-toggle="tab">Product</a></li>
+               
+            </ul>
+            <div id="my-tab-content" class="tab-content">
+                <!-- <a href="/newpitch/new">Add pitch</a> -->
+                <div class="tab-pane active" id="promotion">
+                    <a href="/pitch/new">Add pitch</a>
+                    
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="media-body">
+                                    <div class="thumbnail" style="background-color: transparent;">
+                                        <div class="row">
+                                            <div class="col-md-2 img-responsive">
+                                                <img src="{{url_for('static',filename = 'photos/IMG_3269.jpg')}}" alt="" class="img-thumbnail rounded-circle">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p class="pitch-metadata">
+                                                    <h3 class="inline"><a class="pitch-title" href="#">How to get promoted</a></h3>
+                                                    <small class="text-muted">  Posted on 01/02/2005| Promotion</small>
+                                                   
+                                                </p>
+                                                <p class="pitch-content"> Be kind</p>
+                                                <small class="text-muted">
+                                                 <a class="mr-2" href="#">-Author Justin</a>
+                                                </small>
+                                               
+                    
+                                            </div>
+                    
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="content" id="promotion">
+
+                        <div class="tab-content">
+                            <div class="Pitch">
+                                {{macro.displayPitches(promotionpitches)}}
+  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane active" id="interview">
+                    <a href="/pitch/new">Add pitch</a>
+                    
+                    <br>
+                   
+                    <div class="content" id="interview">
+
+                        <div class="tab-content">
+                            <div class="Pitch">
+                                {{macro.displayPitches(interviewpitches)}}
+  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="business">
+                    
+                    <br>
+                    <a href="/pitch/new">Add pitch</a>
+                    
+                    <br>
+                   
+                    <div class="content" id="interview">
+
+                        <div class="tab-content">
+                            <div class="Pitch">
+                                {{macro.displayPitches(businesspitches)}}
+  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+
+    
 </body>
-{%endblock%}
+{% endblock %}

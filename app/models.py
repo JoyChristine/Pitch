@@ -3,7 +3,9 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin, current_user
 from . import login_manager
 from datetime import datetime
+from sqlalchemy import text
 #...
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -86,47 +88,10 @@ class Pitch(db.Model):
         pitches = Pitch.query.order_by('-id').all()
         return pitches
 
-    # @classmethod
-    # def get_category(cls,cat):
-    #     category = Pitch.query.filter_by(pitch_category=cat).order_by('-id').all()
-    #     return category
 
 
     def __repr__(self):
         return f'Pitch {self.pitch_title}'
-
-# class Pitch(db.Model):
-#     __tablename__ = 'pitches'
-   
-#     id = db.Column(db.Integer,primary_key = True)
-#     pitch_title = db.Column(db.String())
-#     content = db.Column(db.String())
-#     category = db.Column(db.String())
-#     pitch_date = db.Column(db.DateTime,default= datetime.utcnow)
-#     author= db.Column(db.Integer,db.ForeignKey('users.id'))
-    
-    
-#     comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
-#     likes = db.relationship('Like',backref = 'pitch',lazy="dynamic")
-#     dislikes = db.relationship('Dislike',backref = 'pitch',lazy="dynamic")
-    
-#     def save_pitch(self):
-#         db.session.add(self)
-#         db.session.commit()
-
-#     @classmethod
-#     def get_pitch(cls,id):
-#         pitches = Pitch.query.filter_by(user_id=id).all()
-#         return pitches
-
-#     @classmethod
-#     def get_every_pitch(cls,id):
-#         pitches = Pitch.query.order_by('-id').all()
-#         return pitches
-
-#     def __repr__(self):
-#         return f"Pitch'{self.pitch_title}'"
-
 
 
 # # COMMENT
@@ -147,38 +112,41 @@ class Comment(db.Model):
     def get_comments(cls,id):
         comments = Comment.query.filter_by(pitch_id=id).all()
         return comments
-
+    @classmethod
+    def get_all_comments(cls,id):
+        comments = Comment.query.order_by('-id').all()
+        return comments
 
 #like comments
-class Like(db.Model):
-    ___tablename__='likes'
+class Like (db.Model):
+    __tablename__ = 'likes'
 
-    id = db.Column(db.Integer,primary_key = True)
-    like = db.Column(db.Integer)
+    id = db.Column(db.Integer,primary_key=True)
+    like = db.Column(db.Integer,default=1)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
-
-
-    def save_likes(self,like):
-        db.session.add(like)
+    def save_likes(self):
+        db.session.add(self)
         db.session.commit()
 
     def add_likes(cls,id):
-        likes = Like(user = current_user, pitch_id = id)
-        return likes.save_likes()
+        like_pitch = Like(user = current_user, pitch_id=id)
+        like_pitch.save_likes()
+
     @classmethod
     def get_likes(cls,id):
-        likes = Like.query.filter_by(pitch_id=id).all()
-        return likes
+        like = Like.query.filter_by(pitch_id=id).all()
+        return like
+
 
     @classmethod
     def get_all_likes(cls,pitch_id):
-        likes = Like.query.filter_by('-id').all()
+        likes = Like.query.order_by(text('-id')).all()
         return likes
 
     def __repr__(self):
-            return f'User {self.name}'
+        return f'{self.user_id}:{self.pitch_id}'
         
 
 
@@ -208,10 +176,10 @@ class Dislike(db.Model):
 
     @classmethod
     def get_all_dislikes(cls,pitch_id):
-        dislikes = Dislike.query.filter_by('-id').all()
+        dislikes = Dislike.query.order_by(text('-id')).all()
         return dislikes
         
     def __repr__(self):
-            return f'User {self.name}'
+        return f'{self.user_id}:{self.pitch_id}'
         
 

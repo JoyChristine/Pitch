@@ -6,7 +6,7 @@ body{
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vh;
-    overflow: hidden;
+    overflow: auto;
 
 }
 .nav li a{
