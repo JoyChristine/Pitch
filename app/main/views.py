@@ -117,3 +117,30 @@ def comment(pitch_id):
     all_comments = Comment.query.filter_by(pitch_id=pitch_id).all()
     title = f'{pitch.pitch_title}'
     return render_template('comment.html', title = title, comment_form = comment_form, pitch = pitch, comment = all_comments)
+
+@main.route('/pitch/<int:pitch_id>/likes', methods = ['GET','POST'])
+@login_required
+def like(pitch_id):
+    '''
+    View like function that returns the like page and data
+    '''
+    pitch = Pitch.query.get(pitch_id)
+    new_like = Like(pitch=pitch, like=0)
+    new_like.save_likes()
+    # save_likes() is from models.py(class like)
+
+    return redirect(url_for('main.index') )
+
+@main.route('/pitch/<int:pitch_id>/dislikes', methods = ['GET','POST'])
+@login_required
+
+def dislike(pitch_id):
+    '''
+    View dislike function that returns the dislike page and data
+    '''
+    pitch = Pitch.query.get(pitch_id)
+    new_dislike = Dislike(pitch=pitch, dislike=0)
+    new_dislike.save_dislikes()
+    # save_likes() is from models.py(class like)
+
+    return redirect(url_for('main.index') )
