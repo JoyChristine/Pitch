@@ -94,3 +94,26 @@ def pitch():
 
     title = 'New Pitch | One Minute Pitch'
     return render_template('newpitch.html', title = title, pitch_form = pitch_form, likes = my_likes)
+
+@main.route('/pitch/<int:pitch_id>/comment', methods = ['GET','POST'])
+@login_required
+def comment(pitch_id):
+    '''
+    View comment function that returns the comment page and data
+    '''
+    
+
+    comment_form = CommentForm()
+   
+    pitch = Pitch.query.get(pitch_id)
+    
+    if comment_form.validate_on_submit():
+        comment = comment_form.comment.data
+        new_comment = Comment(comment=comment, user = current_user, pitch_id = pitch_id)
+        new_comment.save_comment()
+
+        return redirect(url_for('main.comment', pitch_id = pitch_id))
+
+    all_comments = Comment.query.filter_by(pitch_id=pitch_id).all()
+    title = f'{pitch.pitch_title}'
+    return render_template('comment.html', title = title, comment_form = comment_form, pitch = pitch, comment = all_comments)

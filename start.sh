@@ -1,2 +1,3 @@
-export MAIL_USERNAME=<Your Email Address>
-export MAIL_PASSWORD=<Your Email Password>
+export MAIL_USERNAME='devpythonflask@gmail.com'
+export MAIL_PASSWORD="@whysoserious?"
+export SECRET_KEY='SecretKey'

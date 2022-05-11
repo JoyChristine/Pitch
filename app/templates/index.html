@@ -3,10 +3,11 @@
 {% block content%}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
 <body>
-    <div class="main">
-        <h2>Welcome to Pitch</h2>
-    </div>
+    
     <div class="container">
+        <div class="main">
+            <h2>Welcome to Pitch</h2>
+        </div>
         
         <div id="content">
             <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
@@ -22,7 +23,7 @@
                     <a href="/pitch/new">Add pitch</a>
                     
                     <br>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="media-body">
@@ -52,7 +53,7 @@
                 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                    
                     <div class="content" id="promotion">
 
@@ -92,6 +93,23 @@
                         <div class="tab-content">
                             <div class="Pitch">
                                 {{macro.displayPitches(businesspitches)}}
+  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="product">
+                    
+                    <br>
+                    <a href="/pitch/new">Add pitch</a>
+                    
+                    <br>
+                   
+                    <div class="content" id="product">
+
+                        <div class="tab-content">
+                            <div class="Pitch">
+                                {{macro.displayPitches(productpitches)}}
   
                             </div>
                         </div>
