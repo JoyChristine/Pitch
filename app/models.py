@@ -161,8 +161,8 @@ class Dislike(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
 
-    def save_dislikes(self,dislike):
-        db.session.add(dislike)
+    def save_dislikes(self):
+        db.session.add(self)
         db.session.commit()
 
     def add_dislikes(cls,id):
