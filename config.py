@@ -25,9 +25,6 @@ class DevConfig(Config):
     DEBUG = True
 
 
-# class TestCase(Config):
-#     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://jk:0000@localhost/pitch'
-#     DEBUG = True
 
 config_options = {
 'development':DevConfig,
