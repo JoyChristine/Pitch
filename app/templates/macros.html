@@ -3,6 +3,7 @@
 {% macro displayPitches(all_pitches)%}
 {% if all_pitches%}
     {% for pitch in all_pitches%}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -23,7 +24,9 @@
                                  <a class="mr-2" href="#">-Author {{pitch.user.username}}</a>
                                 </small>
                                <div class="bottom">
-                                <a href="{{url_for('main.comment',pitch_id=pitch.id)}}" class= "btn btn-primary btn-sm"> Comment</a>
+                                    <a href="{{url_for('main.comment',pitch_id=pitch.id)}}" class= "btn btn-primary btn-sm"> Comment</a>
+                                    <a href="{{url_for('main.like',pitch_id=pitch.id)}}" class= "btn btn-primary btn-sm"> Like {{pitch.likes.count()}}</a>
+                                    <a href="{{url_for('main.dislike',pitch_id=pitch.id)}}" class= "btn btn-danger btn-sm"> Dislike{{pitch.dislikes.count()}}</a>
                                </div>
                                 
                             </div>
@@ -45,15 +48,14 @@
 {% macro displayComments(all_comments) %}
 {% if all_comments %}
     {% for comment in all_comments %}
-    <div class="row">
+    <div class="row" >
         <div class="col-sm-12">
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <br>
-                <p>Comment:{{comment.comment}}</p>
-                <p>Author - {{comment.user.username}}</p>
+        <div class="col-md-4" id="com" >
+                <b>Comment:{{comment.comment}}</b>
+                <br><br>
+                <i>By: {{comment.user.username}}</i>
 
-            </div>
+           
   
         </div>  </div>
     </div>

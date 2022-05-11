@@ -1,21 +1,23 @@
 {% extends 'base.html'%} {% block content %}
 
 <div class="container">
-
+    
     <div class="row">
 
 
         <div class="col-md-4">
-            <h3> {{user.username| capitalize}} </h3>
+            <h3> Name: {{user.username| capitalize}} </h3>
 
             {% if user.bio %}
-            <p> {{user.bio}}</p>
+            <p style="color:#fff"> Bio: {{user.bio}}</p>
 
             {%else%}
             <p> {{user.username| capitalize}} has no bio </p>
             {% endif %} 
             {% if user == current_user %}
-            <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a> {% endif %}
+            <button><a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a></button>
+            
+             {% endif %}
 
         </div>
         <div class="col-md-4">

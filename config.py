@@ -4,7 +4,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pitch:mypass@localhost/work'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SECRET_KEY = os.environ.get("SECRET KEY")
+    SECRET_KEY = "SECRET_KEY"
     SESSION_COOKIE_SECURE = False
     # email configs
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -18,7 +18,7 @@ class Config:
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL").replace("://", "ql://", 1) 
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL").replace("postgres://", "postgresql://", 1) 
     DEBUG = True
  
 class DevConfig(Config):

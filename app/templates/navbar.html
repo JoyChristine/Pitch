@@ -5,9 +5,13 @@
 
  <div class="container" id="nav">
   <ul class="nav navbar-nav navbar-right">
+    <li><a href="/" id="home">Home</a></li>
+   
     {% if current_user.is_authenticated %}
-    <li><a href="{{url_for('main.profile',uname=current_user.username)}}" >Profile</a></li>
-    <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+    
+    <li><a href="{{url_for('main.profile',uname=current_user.username)}}" id="profile" >Profile</a></li>
+    &nbsp;&nbsp;
+    <li><a href="{{url_for('auth.logout')}}" id="signout">Sign out</a></li>
     {% else %}
     <button class="btn-navbar"><a href="{{url_for('auth.login')}}">Sign in</a></button>
     
