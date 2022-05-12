@@ -4,7 +4,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pitch:mypass@localhost/work'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SECRET_KEY = "SECRET_KEY"
+    SECRET_KEY = "SecretKey"
     SESSION_COOKIE_SECURE = False
     # email configs
     MAIL_SERVER = 'smtp.googlemail.com'
