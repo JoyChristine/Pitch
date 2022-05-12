@@ -14,13 +14,15 @@
                             </div>
                             <div class="col-md-10">
                                 <p class="pitch-metadata">
-                                    <h3 class="inline"><a class="pitch-title" href="#">{{pitch.pitch_title}}</a></h3>
+                                    <h3 class="inline">
+                                        <a class="pitch-title" id="pitch-title" href="#">{{pitch.pitch_title}}</a>
+                                    </h3>
                                     <small class="text-muted">  Posted on {{pitch.posted.strftime('%d/%m/%Y')}} | {{pitch.category}}</small>
                                    
                                 </p>
                                 <p class="pitch-content">{{pitch.content}}</p>
                                 <small class="text-muted">
-                                    <a class="mr-2" href="#">-Author {{pitch.user.username}}</a>
+                                    Author {{pitch.user.username}}
                                 </small>
                                 <br>
                                 <br>
