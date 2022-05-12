@@ -5,6 +5,7 @@ Pitch is a web application that will help users list and preview pitches in diff
 
 
 ## Features
+NB: A user needs to be logged in & have a profile pic inorder to pitch
 A user can;
 *  See the pitches other people have posted.
 * Vote on the pitch they liked and give it a downvote or upvote.
@@ -37,7 +38,7 @@ View the complete site [here](https://newsapp-joy.herokuapp.com/) -->
 ## Set-up and Installation
 Prepare the environment variables.
 
-    (virtual)$exportDATABASE_URL='postgresqlpsycopg2://username:password@localhost/pitch'`<br/>
+    (virtual)$exportDATABASE_URL='postgresqlpsycopg2://username:password@localhost/name_of_database'`<br/>
     `(virtual)$ export SECRET_KEY='Your secret key'
 
 Run Database Migrations.
