@@ -9,7 +9,7 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class PitchForm(FlaskForm):
-    category = SelectField('Pitch category',choices=[('Interview','Interview'),('Product','Product'),('Promotion','Promotion'),('Business','Business')],validators = [InputRequired()])
+    category = SelectField('Pitch category',choices=[('Promotion','Promotion'),('Interview','Interview'),('Product','Product'),('Business','Business')],validators = [InputRequired()])
     pitch_title = TextAreaField('Pitch title',validators = [InputRequired()])
     content = TextAreaField('Pitch content',validators = [InputRequired()])
     

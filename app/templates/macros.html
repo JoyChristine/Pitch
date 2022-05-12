@@ -1,8 +1,7 @@
+{% macro displayPitches(pitches) %}
 
+    {% for pitch in pitches %}
 
-{% macro displayPitches(all_pitches)%}
-{% if all_pitches%}
-    {% for pitch in all_pitches%}
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
     <div class="row">
         <div class="col-sm-12">
@@ -23,9 +22,11 @@
                                 <small class="text-muted">
                                     <a class="mr-2" href="#">-Author {{pitch.user.username}}</a>
                                 </small>
+                                <br>
+                                <br>
                                <div class="bottom">
                                     <a href="{{url_for('main.comment',pitch_id=pitch.id)}}" class= "btn btn-primary btn-sm"> Comment</a>
-                                    <a href="{{url_for('main.like',pitch_id=pitch.id)}}" class= "btn btn-primary btn-sm"> Like {{pitch.likes.count()}}</a>
+                                    <a href="{{url_for('main.like',pitch_id=pitch.id)}}" class= "btn btn-primary btn-sm"> Like{{pitch.likes.count()}}</a>
                                     <a href="{{url_for('main.dislike',pitch_id=pitch.id)}}" class= "btn btn-danger btn-sm"> Dislike{{pitch.dislikes.count()}}</a>
                                </div>
                                 
@@ -40,8 +41,7 @@
         </div>
     </div>
     {% endfor %}
-{% else %}
-{% endif %}
+
 {% endmacro %}
 
 <!-- -------------COMMENT SECTION ---------------- -->

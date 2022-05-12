@@ -85,7 +85,7 @@ class Pitch(db.Model):
 
     @classmethod
     def get_all_pitches(cls):
-        pitches = Pitch.query.order_by('-id').all()
+        pitches = Pitch.query.order_by(text('-id')).all()
         return pitches
 
 
@@ -114,7 +114,7 @@ class Comment(db.Model):
         return comments
     @classmethod
     def get_all_comments(cls,id):
-        comments = Comment.query.order_by('-id').all()
+        comments = Comment.query.order_by(text('-id')).all()
         return comments
 
 #like comments

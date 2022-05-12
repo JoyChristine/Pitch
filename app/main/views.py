@@ -13,17 +13,33 @@ from .forms import UpdateProfile,PitchForm,CommentForm
 @main.route('/', methods=['GET','POST'])
 def index():
    
-    promotionpitches = Pitch.query.filter_by(category='promotion').order_by(Pitch.posted.desc()).all()
-    interviewpitches = Pitch.query.filter_by(category="interview").order_by(Pitch.posted.desc()).all()
-    businesspitches = Pitch.query.filter_by(category="business").order_by(Pitch.posted.desc()).all()
-    productpitches = Pitch.query.filter_by(category="product").order_by(Pitch.posted.desc()).all()
+    promotionpitches = Pitch.query.filter_by(category='Promotion').order_by(Pitch.posted.desc()).all()
+    interviewpitches = Pitch.query.filter_by(category="Interview").order_by(Pitch.posted.desc()).all()
+    businesspitches = Pitch.query.filter_by(category="Business").order_by(Pitch.posted.desc()).all()
+    productpitches = Pitch.query.filter_by(category="Product").order_by(Pitch.posted.desc()).all()
 
-    pitches = Pitch.query.filter_by().first()
+    
+    pitches = Pitch.query.all()
+    # pitches = Pitch.query.filter_by().first()
     likes = Like.get_all_likes(pitch_id=Pitch.id)
     dislikes = Dislike.get_all_dislikes(pitch_id=Pitch.id)
 
     title = 'Home'
     return render_template('index.html', title = title, pitches = pitches, promotionpitches = promotionpitches, interviewpitches = interviewpitches, businesspitches = businesspitches, productpitches = productpitches, likes = likes, dislikes = dislikes)
+
+
+# @main.route('/home', methods = ['GET', 'POST'])
+# @login_required
+# def home():
+#     promotionpitches = Pitch.query.filter_by(category='promotion').order_by(Pitch.posted.desc()).all()
+#     interviewpitches = Pitch.query.filter_by(category="interview").order_by(Pitch.posted.desc()).all()
+#     businesspitches = Pitch.query.filter_by(category="business").order_by(Pitch.posted.desc()).all()
+#     productpitches = Pitch.query.filter_by(category="product").order_by(Pitch.posted.desc()).all()
+#     pitch = Pitch.get_all_pitches()
+#     # print(all_pitches)
+
+#     title = 'Home | One Min Pitch'
+#     return render_template('home.html', title = title, pitch = pitch, interviewpitches = interviewpitches, productpitches = productpitches, promotionpitches = promotionpitches, businesspitches = businesspitches)
 
 
 @main.route('/user/<uname>')
