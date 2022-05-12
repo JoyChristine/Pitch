@@ -6,6 +6,7 @@ Pitch is a web application that will help users list and preview pitches in diff
 
 ## Features
 NB: A user needs to be logged in & have a profile pic inorder to pitch
+<br>
 A user can;
 *  See the pitches other people have posted.
 * Vote on the pitch they liked and give it a downvote or upvote.
